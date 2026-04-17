@@ -55,7 +55,7 @@
                                     </td>
                                     <td>
                                         <a href="javascript: document.getElementById('delete-{{ $place->id }}').submit()" class="btn btn-danger btn-sm">Eliminar</a>
-                                        <form id="delete-{{ $place->id }}" action="{{ route('places.delete'), $place->id }}" method="POST">
+                                        <form id="delete-{{ $place->id }}" action="{{ route('places.delete', $place->id ) }}" method="POST">
                                             @method('delete')
                                             @csrf
                                         </form>
