@@ -13,7 +13,7 @@
 
 ---
 
-## 📍 DondeVoy
+# 📍 DondeVoy
 
 **DondeVoy** es una aplicación web en desarrollo que permite descubrir, guardar y valorar lugares como cafés, bares y restaurantes.
 

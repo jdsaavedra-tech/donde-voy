@@ -30,6 +30,7 @@
                                 <th>Barrio</th>
                                 <th>Descripción</th>
                                 <th>Fecha creación</th>
+                                <th>Acción</th>
                             </thead>
                             <tbody>
                                 @foreach ($places as $place)
@@ -51,6 +52,13 @@
                                     </td>
                                     <td>
                                         {{ $place->created_at->format('d/m/Y H:i') }}
+                                    </td>
+                                    <td>
+                                        <a href="javascript: document.getElementById('delete-{{ $place->id }}').submit()" class="btn btn-danger btn-sm">Eliminar</a>
+                                        <form id="delete-{{ $place->id }}" action="{{ route('places.delete'), $place->id }}" method="POST">
+                                            @method('delete')
+                                            @csrf
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

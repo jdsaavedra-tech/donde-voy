@@ -27,3 +27,9 @@ Route::post('places', function(Request $request){
 
     return redirect()->route('places.index')->with('info', 'Producto creado exitosamente');
 })->name('places.store');
+
+Route::delete('places/{id}', function($id){
+    $place = Place::findOrFail($id);
+    $place->delete();
+    return redirect()->route('places.index')->with('info, Local eliminado exitosamente');
+})->name('places.delete');
