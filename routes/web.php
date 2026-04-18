@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Place;
 
-Route::middleware('auth')->group(function(){
+/*Route::middleware('auth')->group(function(){
+
+});*/
 
 Route::get('places', function () {
     //$places = Place::orderBy('created_at', 'desc')->get();   para ordenar descendente
@@ -52,5 +54,5 @@ Route::put('places/{id}', function(Request $request, $id){
     return redirect()->route('places.index')->with('info', 'Local editado exitosamente');
 })->name('places.update');
 
-});
+
 
