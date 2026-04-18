@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DondeVoy</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
-<body>
+@extends('layouts.main')
+@section('contenido')
     <div class="container">
         <div class="row">
             <div class="col-med-12">
@@ -54,6 +46,7 @@
                                         {{ $place->created_at->format('d/m/Y H:i') }}
                                     </td>
                                     <td>
+                                        <a href="{{ route('places.edit', $place->id) }}" class="btn btn-primary btn-sm">Editar</a>
                                         <a href="javascript: document.getElementById('delete-{{ $place->id }}').submit()" class="btn btn-danger btn-sm">Eliminar</a>
                                         <form id="delete-{{ $place->id }}" action="{{ route('places.delete', $place->id ) }}" method="POST">
                                             @method('delete')
@@ -69,5 +62,5 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+@endsection
+    

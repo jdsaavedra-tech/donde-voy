@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Place;
 
+Route::middleware('auth')->group(function(){
+
 Route::get('places', function () {
     //$places = Place::orderBy('created_at', 'desc')->get();   para ordenar descendente
     $places = Place::latest()->get(); // Para ordenar por el último creado primero 
@@ -33,3 +35,22 @@ Route::delete('places/{id}', function($id){
     $place->delete();
     return redirect()->route('places.index')->with('info', 'Local eliminado exitosamente');
 })->name('places.delete');
+
+Route::get('places/{id}/edit', function($id){
+    $place = Place::findOrFail($id);
+    return view('places.edit', compact('place'));
+})->name('places.edit');
+
+Route::put('places/{id}', function(Request $request, $id){
+    $place = Place::findOrFail($id);
+    $place->name = $request->input('name');
+    $place->category = $request->input('category');
+    $place->address = $request->input('address');
+    $place->neighborhood = $request->input('neighborhood');
+    $place->description = $request->input('description');
+    $place->save();
+    return redirect()->route('places.index')->with('info', 'Local editado exitosamente');
+})->name('places.update');
+
+});
+
